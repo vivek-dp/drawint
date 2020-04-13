@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" type="text/css" href="../css/semantic.min.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/semantic.min.js"></script>
+    
+    <script type="text/javascript">
+      $('.checkbox').checkbox();
+      $('.dropdown').dropdown();
+      $(document).ready(function(){
+        $('#submitform').on('click', function(){
+          console.log("Hi..");
+          params = {};
+          params['width'] = $('#width').val(); 
+          params['height'] = $('#height').val();
+          params['depth'] = $('#depth').val();
+          params['skirting'] = $("input[name='frequency']:checked").val();
+
+          skpStr = JSON.stringify(params);
+          console.log('skpStr : '+skpStr);
+          window.location = 'skp:create_component@'+skpStr;
+        });
+      }); 
+    </script>
+    <style>
+      .form_label {
+        display:flex; 
+        flex-direction: row; 
+        justify-content: center; 
+        align-items: center;
+      };
+      #label {
+        width: 40%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui container">
+      <div class="ui form">
+				<div class="field">
+          <fieldset style="background:#e1eff2;">
+            <div class="form_label">
+              <label>Width    </label><input type="text" id="width" value="500"/>   
+            </div>
+            <div class="form_label">
+              <label>Height   </label><input type="text" id="height" value="400" />   
+            </div>
+            <div class="form_label">
+              <label>Depth   </label><input type="text" id="depth" value="700"/>   
+            </div>
+            <div class="inline fields">
+              <label>Skirtings</label>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="frequency" value="true">
+                  <label>Yes</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="frequency" value="false" checked="checked">
+                  <label>No</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>         
+				</div>
+
+        
+        <div>
+          <button class="mini ui positive button" id="submitform">Submit</button>
+        </div>
+			</div>
+    </div>
+  </body>
+</html>

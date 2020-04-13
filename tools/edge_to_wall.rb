@@ -2,7 +2,8 @@ require 'singleton'
 module DrawInt
   class EdgeToWall
     include Singleton
-    #
+    
+    #Draw wall on the larger face
     def draw_wall sel_edge, len
       faces = sel_edge.faces
       edge_vector = sel_edge.line[1]
