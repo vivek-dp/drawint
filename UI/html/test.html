@@ -11,23 +11,42 @@
       $(document).ready(function(){
         $('#submitform').click(function(){
           params = {};
-          params['width'] = $('#width').val(); 
-          params['height'] = $('#height').val();
-          params['depth'] = $('#depth').val();
+          params['width']     = $('#width').val(); 
+          params['height']    = $('#height').val();
+          params['depth']     = $('#depth').val();
+          params['gender']    = $('#dselect').dropdown('get value');
+          params['skirting']  = $('#skirting_flag').checkbox('is checked');
 
           skpStr = JSON.stringify(params);
           window.location = 'skp:create_custom_component@'+skpStr;
         });
         
         $('.checkbox').checkbox();
+        $('.dropdown').dropdown();
+        $('.ui.dropdown').dropdown();
       });
     </script>
+    <style>
+      body {
+        background: rgb(15,189,193);
+        background: linear-gradient(90deg, rgba(15,189,193,1) 0%, rgba(15,210,166,1) 95%, rgba(0,255,82,1) 99%, rgba(5,168,244,1) 100%); 
+      };
+    </style>
   </head>
   <body>
     <div class="ui container-fluid">
-      <div class="ui equal width form right-pad left-pad">
+      <div class="ui equal width form">
 
-        <div class="field" style="padding-top: 10px;">
+        <div class="field">
+          <div class="ui labeled input">
+					  <div class="ui positive checkbox">
+              <input type="checkbox" id="autofill" tabindex="0" class="hidden">
+            </div>
+            <div class="ui red label">Autofill</div>
+          </div>
+        </div>
+
+        <div class="field" >
           <div class="ui labeled input">
             <div class="ui label">Width</div>
 					  <div class="ui input">
@@ -36,7 +55,7 @@
           </div>
         </div>
 
-        <div class="field" style="padding-top: 10px;">
+        <div class="field">
           <div class="ui labeled input">
             <div class="ui label">Height</div>
 					  <div class="ui input">
@@ -45,7 +64,7 @@
           </div>
         </div>
 
-        <div class="field" style="padding-top: 10px;">
+        <div class="field">
           <div class="ui labeled input">
             <div class="ui label">Depth</div>
 					  <div class="ui input">
@@ -54,11 +73,21 @@
           </div>
         </div>
 
-        <div class="field" style="padding-top: 10px;">
-          <div class="ui labeled input">
-            <div class="ui label">Autofill</div>
-					  <div class="ui checkbox">
-              <input type="checkbox" id="autofill" tabindex="0" class="hidden">
+        <div class="field">
+          <div class="ui toggle checkbox">
+            <input type="checkbox" id="skirting_flag" name="public">
+            <label>Has Skirting?</label>
+          </div>
+        </div>
+
+        <div class="field" style="padding-top: 1px;">
+          <div id="dselect" class="ui selection dropdown">
+            <input type="hidden" name="gender">
+            <i class="dropdown icon"></i>
+            <div class="default text">Gender</div>
+            <div id="dgender" class="menu">
+              <div class="item" data-value="1">Male</div>
+              <div class="item" data-value="0">Female</div>
             </div>
           </div>
         </div>
@@ -66,10 +95,12 @@
         <button class="ui button" type="submit" id="submitform">Submit</button>
       </div>
     </div>
+
     <script>
       $('#autofill').on('change', function(){
         $('#width').val('Vivek');
       });
     </script>
+  
   </body>
 </html>
