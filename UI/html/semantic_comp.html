@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" type="text/css" href="../css/semantic.min.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/semantic.min.js"></script>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        console.log("Hi....");
+        //window.location = 'skp:getroot@'+100;
+        $('#submitform').on('click', function(){
+          //alert("Hi..");
+          params = {};
+          params['width'] = $('#width').val(); 
+          params['height'] = $('#height').val();
+          params['depth'] = $('#depth').val();
+          //params['skirting'] = $("input[name='frequency']:checked").val();
+
+          skpStr = JSON.stringify(params);
+          console.log('skpStr : '+skpStr);
+          //alert('skpStr : '+skpStr);
+          query = "skp:getroot@"+1; //+skpStr;
+          console.log(query);
+          // window.location = 'skp:getroot@'+2;
+          // window.location.href = 'skp:getroot@'+2;
+        });
+        
+        // $('#autofill').on('change', function(){
+        //   alert("Clicked");
+        //   console.log("Clicked.........");
+        // });
+                
+        // $('.checkbox').checkbox();
+        // $('.dropdown').dropdown();
+        // $('.ui.checkbox').checkbox();
+      }); 
+      function submitVal() {
+        console.log("submitVal");
+        params = {};
+        params['width'] = $('#width').val(); 
+        params['height'] = $('#height').val();
+        params['depth'] = $('#depth').val();
+       
+        skpStr = JSON.stringify(params);
+        console.log('skpStr : '+skpStr);
+        //alert('skpStr : '+skpStr);
+        //console.log(query);
+        //window.location = 'skp:getroot@'+2;
+        window.location = 'skp:getroot@'+2;
+      }
+    </script>
+    <style>
+      body {
+        background: #008080;
+        color: rgba(255, 255, 255, 0.9);
+      };
+    </style>
+  </head>
+  <body>
+    <div class="ui container">
+      <form class="ui form">
+        <div class="field">
+          <input type="text" id="width" placeholder="Width">
+        </div>
+        <div class="field">
+          <input type="text" id="height" placeholder="Height">
+        </div>
+        <div class="field">
+          <input type="text" id="depth" placeholder="Depth">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" id="autofill" tabindex="0" class="hidden"><label>Autofill</label>
+          </div>
+        </div>
+        <button class="ui button" type="submit" id="submitform" onclick="submitVal()">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
