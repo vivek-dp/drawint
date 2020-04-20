@@ -14,7 +14,7 @@
           params['width']     = $('#width').val(); 
           params['height']    = $('#height').val();
           params['depth']     = $('#depth').val();
-          params['gender']    = $('#dselect').dropdown('get value');
+          params['shape']    = $('#dshape').dropdown('get value');
           params['skirting']  = $('#skirting_flag').checkbox('is checked');
 
           skpStr = JSON.stringify(params);
@@ -84,10 +84,10 @@
           <div id="dselect" class="ui selection dropdown">
             <input type="hidden" name="gender">
             <i class="dropdown icon"></i>
-            <div class="default text">Gender</div>
-            <div id="dgender" class="menu">
-              <div class="item" data-value="1">Male</div>
-              <div class="item" data-value="0">Female</div>
+            <div class="default text">Shape</div>
+            <div id="dshape" class="menu">
+              <div class="item" data-value="rectangle">Rectangle</div>
+              <div class="item" data-value="sphere">Sphere</div>
             </div>
           </div>
         </div>

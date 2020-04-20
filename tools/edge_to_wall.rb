@@ -36,4 +36,4 @@ module DrawInt
   end
 end
 
-Sketchup.active_model.select_tool(DrawInt::EdgeToWall.instance)
+#Sketchup.active_model.select_tool(DrawInt::EdgeToWall.instance)
